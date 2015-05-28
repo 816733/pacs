@@ -29,9 +29,14 @@ int main(){
 	v[0] = 1;
 	Polynomial<1,real> p2(v);
 	std::cout << "p2: " << p2 << std::endl;
-	
+	try{
+		auto psum = p1+p2;
+		std::cout << "Addizione: " << psum << std::endl;
+	}catch(const std::runtime_error &re){
+		std::cerr << "Runtime error: " << re.what() << std::endl;	
+	}
+		
 	std::cout << "Moltiplicazione: " << p1*p2 << std::endl;
-	std::cout << "Addizione: " << p1+p2 << std::endl;
 	std::cout << "Sottrazione: " << p1-p2 << std::endl;	
 	
 	

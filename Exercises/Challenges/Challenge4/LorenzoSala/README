@@ -1,0 +1,24 @@
+Makefile:
+- "all" 	compila entrambi i main
+- "normal" 	compila soltanto la parte con i polinomi versione base senza template
+- "template"	compila soltanto la parte con i polinomi template
+
+NOTE SULLA VERSIONE BASE:
+è stato fatto l'overloading di tutti gli operatori anche degli stream, in particolare la struttura per scrivere i polinomi in input è tipo:
+4x^5 -3x^3 +1x^1 +3x^0 
+E' importante che si parta dal grado massimo e si lasci uno spazio tra un elemento e un altro.
+Non è necessario scrivere tutti i gradi se il coefficiente corrispondente è nullo, e chiudere con uno spazio.
+
+Nell'operatore /= si è scelto di restituire soltanto il quoziente, mentre per il / viene restituito un pair con quoziente e resto.
+
+E' stato implementato anche il "solve" tramite algoritmo di Horner-Newton, ma attenzione ai polinomi che hanno radici complesse.
+
+
+NOTE SUI TEMPLATE:
+è stato fatto l'overloading di tutti gli operatori analogamente con quanto fatto nella versione base, con la differenza nello istream che deve essere stanziato un grado generale massimo per la gestione del template.
+
+Una nota particolare per l'addizione per cui non vale la proprietà commutativa, ma bisogna sempre inserire come primo addendo quello con grado più elevato (gestione tramite exception).
+
+Il "solve" in questo caso è permesso soltanto per polinomi di tipo double o polinomi di tipo double complessi, mentre per gli altri tipi viene lanciato un errore a runtime.
+
+

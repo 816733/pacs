@@ -101,7 +101,11 @@ void Polynomial<D,T>::P_normalize(){
 
 template <unsigned S, unsigned U,typename T>
 Polynomial<S,T> operator+(Polynomial<S,T> const & pl,Polynomial<U,T> const & pr){
-	Polynomial<S,T> tmp = pl;
+	Polynomial<S,T> tmp = pl;	
+	if(S<U){
+		throw std::runtime_error("This sum is not possible, apply the commutative property because the first addend has to be greater than the second");
+		return tmp;
+	}
 	for (unsigned int i=0 ; i < pr.coeffs.size();++i)
 		tmp.coeffs[i] += pr.coeffs[i];
 	tmp.P_normalize();	
